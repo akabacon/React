@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hello React</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div id="app">
+    <!--我的應用程式在此渲染-->
+  </div>
+  <script src="react/build/react.js"></script>
+  <script src="react/build/react-dom.js"></script>
+  <script>
+    //我的應用程式的程式碼
+    var TextAreaCounter = React.createClass({
+      propTypes: {
+        text: React.PropTypes.string,
+      },
+      getInitialState: function () {
+        return {
+          text: this.props.text,
+        };
+      },
+      _textChange: function (ev) {
+        this.setState({
+          //狀態
+          text: ev.target.value,
+        });
+      },
+      render: function() {
+        const textLines = this.state.text.split('\n'); //fetch \n from textbox
+        const numLines = textLines.length;
+        return React.DOM.div(null,
+          React.DOM.textarea({
+            value: this.state.text,
+            onChange: this._textChange,
+          }),
+          React.DOM.h3(null, numLines + " lines")
+        );
+      }
+    })
+    ReactDOM.render(
+      React.createElement(TextAreaCounter, {
+        text: "Bob",
+      }),
+      document.getElementById("app"))
+  </script>
+</body>
+
+</html>
