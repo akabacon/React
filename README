@@ -1,1 +1,5 @@
 匯入多張圖片:https://stackoverflow.com/questions/31241734/nodejs-require-path-to-image-image-jpg-as-base64
+
+delete:lock ,node module ,yarn.lock
+modify package's version
+npm i
